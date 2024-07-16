@@ -1,0 +1,27 @@
+<footer class="bg-white rounded-lg shadow dark:bg-gray-900 m-4">
+    <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+        <div class="sm:flex sm:items-center sm:justify-between">
+            <a href="{{ url('/') }}" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+{{--                <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="VetGiftcard Logo" />--}}
+                <span class="text-xl">Vet<b class="text-indigo-600">Giftcards</b></span>
+            </a>
+            <ul class="flex flex-wrap items-center mb-6 text-md font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+                <li>
+                    <a href="{{ route('about-us') }}" class="hover:underline me-4 md:me-6">About</a>
+                </li>
+                <li>
+                    <a href="{{ url('/') }}#faq" class="hover:underline me-4 md:me-6">FAQ's</a>
+                </li>
+                <li>
+                    <a href="{{ route('giftcards') }}" class="hover:underline me-4 md:me-6">Validate Gifcard</a>
+                </li>
+                <li>
+                    <a href="{{ route('contact-us') }}" class="hover:underline">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+        <span class="block text-sm text-gray-500 sm:text-center">© 2023 <a href="https://flowbite.com/" class="hover:underline">VetGiftcards™</a>. All Rights Reserved.</span>
+    </div>
+</footer>
+
