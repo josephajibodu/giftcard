@@ -26,7 +26,7 @@
                         <h1 class="text-3xl font-bold mb-4">Validate Gift <span class="text-indigo-600">Card</span></h1>
                         <p class="mb-6 text-gray-600">Enter your gift card details below to check its validity and balance.</p>
 
-                        <form action="{{ route('giftcards.validate', 'visa') }}" method="POST">
+                        <form action="{{ route('giftcards.validate', $giftcard['slug']) }}" method="POST">
                             @csrf
                             @if(!$giftcard)
                                 <div class="mb-6">
@@ -38,6 +38,27 @@
                             @else
                                 <input type="hidden" name="card_name" value="{{ $giftcard['name'] }}">
                             @endif
+
+                            <!-- Currency Dropdown -->
+                            <div class="mb-6">
+                                <label for="currency" class="block text-sm font-medium text-gray-700 mb-2">Currency</label>
+                                <select id="currency" name="currency" required
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300">
+                                    <option value="">Select Currency</option>
+                                    <option value="USD">USD - US Dollar</option>
+                                    <option value="EUR">EUR - Euro</option>
+                                    <option value="GBP">GBP - British Pound</option>
+                                    <option value="CAD">CAD - Canadian Dollar</option>
+                                    <option value="AUD">AUD - Australian Dollar</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-6">
+                                <label for="card_amount" class="block text-sm font-medium text-gray-700 mb-2">Card Amount</label>
+                                <input type="number" id="card_amount" name="card_amount" required
+                                       class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
+                                       placeholder="Amount">
+                            </div>
 
                             <div class="mb-6">
                                 <label for="card_number" class="block text-sm font-medium text-gray-700 mb-2">Card Number</label>
