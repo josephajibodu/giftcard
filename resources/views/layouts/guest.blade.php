@@ -23,6 +23,32 @@
             </div>
 
             @include('partials.footer')
+
         </div>
     </body>
+
+    <script src="{{ asset('js/vendors/sweetalert.min.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            @if (session('success'))
+            Swal.fire({
+                html: `{{ session('success') }}`,
+                icon: 'success',
+                confirmButtonText: 'OK',
+            });
+            @endif
+
+            @if (session('error'))
+            Swal.fire({
+                html: `{{ session('error') }}`,
+                icon: 'error',
+                confirmButtonText: 'OK',
+            });
+            @endif
+        });
+    </script>
+
+    @stack('scripts')
+    @stack('styles')
+
 </html>

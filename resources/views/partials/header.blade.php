@@ -17,8 +17,8 @@
         <div class="hidden lg:flex lg:gap-x-12">
             <a href="{{ route('about-us') }}" class="text-md leading-6 text-gray-900">About</a>
             <a href="{{ route('contact-us') }}" class="text-md leading-6 text-gray-900">Contact</a>
-            <a href="{{ route('giftcards') }}" class="text-md leading-6 text-gray-900">Buy Card</a>
-            <a href="{{ route('giftcards') }}" class="text-md leading-6 text-gray-900">Validate Card</a>
+            <a href="{{ route('giftcards.index') }}" class="text-md leading-6 text-gray-900">Buy Card</a>
+            <a href="{{ route('giftcards.index') }}" class="text-md leading-6 text-gray-900">Validate Card</a>
         </div>
 {{--        <div class="hidden lg:flex lg:flex-1 lg:justify-end">--}}
 {{--            <a href="#" class="text-md font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>--}}
@@ -45,8 +45,8 @@
                     <div class="space-y-2 py-6">
                         <a href="{{ route('about-us') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">About</a>
                         <a href="{{ route('contact-us') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Contact</a>
-                        <a href="{{ route('giftcards') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Buy Card</a>
-                        <a href="{{ route('giftcards') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Validate Card</a>
+                        <a href="{{ route('giftcards.index') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Buy Card</a>
+                        <a href="{{ route('giftcards.index') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Validate Card</a>
                     </div>
 {{--                    <div class="py-6">--}}
 {{--                        <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log in</a>--}}

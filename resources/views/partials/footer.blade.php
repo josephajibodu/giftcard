@@ -13,7 +13,7 @@
                     <a href="{{ url('/') }}#faq" class="hover:underline me-4 md:me-6">FAQ's</a>
                 </li>
                 <li>
-                    <a href="{{ route('giftcards') }}" class="hover:underline me-4 md:me-6">Validate Gifcard</a>
+                    <a href="{{ route('giftcards.index') }}" class="hover:underline me-4 md:me-6">Validate Gifcard</a>
                 </li>
                 <li>
                     <a href="{{ route('contact-us') }}" class="hover:underline">Contact</a>
