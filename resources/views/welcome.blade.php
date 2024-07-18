@@ -24,10 +24,10 @@
                         Your No.1 stop for any gift card purchase and validation - swift response, top-knotch security and trusted by over 5,000 users daily.
                     </p>
                     <div class="mt-10 flex items-center justify-center gap-x-6">
-                        <a href="#" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                        <a href="{{ route('giftcards.index') }}" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                             Buy Card
                         </a>
-                        <a href="#" class="text-sm font-semibold leading-6 text-gray-900">
+                        <a href="{{ route('giftcards.index') }}" class="text-sm font-semibold leading-6 text-gray-900">
                             Validate Card<span aria-hidden="true">→</span>
                         </a>
                     </div>

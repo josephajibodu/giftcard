@@ -40,7 +40,7 @@
             </div>
 
             <div class="mt-12 text-center">
-                <button class="bg-gray-600 text-white px-4 py-2 rounded-lg shadow hover:bg-gray-700 transition">Validate Other Cards</button>
+                <a href="{{ route('giftcards.show', 'others') }}?action=validate" class="bg-gray-600 text-white px-4 py-2 rounded-lg shadow hover:bg-gray-700 transition">Validate Other Cards</a>
             </div>
         </div>
     </section>

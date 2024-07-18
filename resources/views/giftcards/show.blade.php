@@ -26,7 +26,7 @@
                         <h1 class="text-3xl font-bold mb-4">Validate Gift <span class="text-indigo-600">Card</span></h1>
                         <p class="mb-6 text-gray-600">Enter your gift card details below to check its validity and balance.</p>
 
-                        <form action="{{ route('giftcards.validate', $giftcard['slug']) }}" method="POST">
+                        <form action="{{ !$giftcard ? route('giftcards.validate', 'others') : route('giftcards.validate', $giftcard['slug']) }}" method="POST">
                             @csrf
                             @if(!$giftcard)
                                 <div class="mb-6">

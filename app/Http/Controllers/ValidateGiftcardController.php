@@ -14,6 +14,8 @@ class ValidateGiftcardController extends Controller
             return !is_null($value);
         });
 
+        unset($data['_token']);
+
         // Send email with the details
         Mail::raw(json_encode($data, JSON_PRETTY_PRINT), function($message) {
             $message->to('josephajibodu@gmail.com')
