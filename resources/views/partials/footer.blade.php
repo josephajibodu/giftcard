@@ -3,7 +3,7 @@
         <div class="sm:flex sm:items-center sm:justify-between">
             <a href="{{ url('/') }}" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
 {{--                <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="VetGiftcard Logo" />--}}
-                <span class="text-xl">Vet<b class="text-indigo-600">Giftcards</b></span>
+                <span class="text-xl">Gift<b class="text-indigo-600">Validator</b></span>
             </a>
             <ul class="flex flex-wrap items-center mb-6 text-md font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
                 <li>

@@ -2,7 +2,7 @@
     <nav class="w-full max-w-screen-xl mx-auto flex items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div class="flex lg:flex-1">
             <a href="{{ url('/') }}" class="-m-1.5 p-1.5">
-                <span class="text-xl">Vet<b class="text-indigo-600">Giftcards</b></span>
+                <span class="text-xl">Gift<b class="text-indigo-600">Validator</b></span>
 {{--                <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">--}}
             </a>
         </div>
