@@ -19,6 +19,8 @@ Route::post('contact-us', function (Request $request) {
 
     $data = $request->all();
 
+    unset($data['_token']);
+
     // get response emails (array of emails)
     $emails = app(\App\Settings\GeneralSetting::class)->receiving_email;
 
