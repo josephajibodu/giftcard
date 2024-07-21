@@ -119,6 +119,8 @@
 
     @include('partials.cta')
 
-    @include('partials.faq')
+    <div class="px-4">
+        @include('partials.faq')
+    </div>
 
 @endsection
