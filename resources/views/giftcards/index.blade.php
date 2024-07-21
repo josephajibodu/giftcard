@@ -9,7 +9,7 @@
             <p class="text-center text-gray-700 mb-12">Select a gift card to purchase or validate. If you can't find your preferred card, kindly select the "other cards" option.</p>
 
             <!-- Giftcard -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
 
                 @foreach($giftcards as $giftcard)
                     <div class="bg-[#F1F4FC] rounded-lg shadow-lg pb-6 transform transition duration-500 overflow-hidden">

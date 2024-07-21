@@ -10,7 +10,7 @@
                     <a href="{{ route('about-us') }}" class="hover:underline me-4 md:me-6">About</a>
                 </li>
                 <li>
-                    <a href="{{ url('/') }}#faq" class="hover:underline me-4 md:me-6">FAQ's</a>
+                    <a href="{{ route('faq') }}" class="hover:underline me-4 md:me-6">FAQ's</a>
                 </li>
                 <li>
                     <a href="{{ route('giftcards.index') }}" class="hover:underline me-4 md:me-6">Validate Gifcard</a>

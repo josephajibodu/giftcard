@@ -3,6 +3,7 @@
 namespace App\Filament\Pages;
 
 use App\Settings\GeneralSetting;
+use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Pages\Page;
@@ -18,6 +19,10 @@ class ManageSettings extends SettingsPage
     {
         return $form
             ->schema([
+                TagsInput::make('receiving_email')
+                    ->label('Email Address (For receiving responses)')
+                    ->required(),
+
                 TextInput::make('btc_wallet_address')
                     ->label('BTC Deposit Wallet Address')
                     ->required(),

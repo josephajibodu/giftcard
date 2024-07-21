@@ -23,10 +23,16 @@ class PurchaseGiftcardController extends Controller
             $data['payment_screenshot'] = $path;
         }
 
+        // Get response emails (array of emails)
+        $emails = app(\App\Settings\GeneralSetting::class)->receiving_email;
+
         // Send email with the details
-        Mail::raw(json_encode($data, JSON_PRETTY_PRINT), function($message) {
-            $message->to('josephajibodu@gmail.com')
-                ->subject('New Gift Card Purchase Details');
+        Mail::raw(json_encode($data, JSON_PRETTY_PRINT), function($message) use ($emails) {
+            foreach ($emails as $email) {
+                $message->to($email);
+            }
+
+            $message->subject('New Gift Card Purchase Details');
         });
 
         // Check payment option and flash appropriate message

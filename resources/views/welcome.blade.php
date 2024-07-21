@@ -119,4 +119,6 @@
 
     @include('partials.cta')
 
+    @include('partials.faq')
+
 @endsection
