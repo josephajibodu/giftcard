@@ -17,11 +17,13 @@ Route::post('contact-us', function (Request $request) {
         'message' => 'required|string',
     ]);
 
+    $data = $request->all();
+
     // get response emails (array of emails)
     $emails = app(\App\Settings\GeneralSetting::class)->receiving_email;
 
     // Send email logic (you can customize this as per your requirement)
-    Mail::raw($request->message, function ($message) use ($emails, $request) {
+    Mail::raw(json_encode($data, JSON_PRETTY_PRINT), function ($message) use ($emails, $request) {
 
         foreach ($emails as $email) {
             $message->to($email);
