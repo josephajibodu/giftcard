@@ -8,7 +8,7 @@
             <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
                 <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
             </div>
-            <div class="mx-auto max-w-2xl pt-16 sm:pt-24 lg:pt-32 pb-8 sm:pb-12 lg:pb-16">
+            <div class="mx-auto max-w-2xl pt-16 sm:pt-24 lg:pt-32 pb-8 sm:pb-12 lg:pb-16 animate__animated" data-animation="animate__slideInUp">
                 <div class="hidden sm:mb-8 sm:flex sm:justify-center">
                     <div class="relative flex items-center gap-2 rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
                         Validate | Purchase
@@ -18,7 +18,7 @@
 
                     </div>
                 </div>
-                <div class="text-center">
+                <div class="text-center ">
                     <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Purchase and validate digital gift cards</h1>
                     <p class="mt-6 text-lg leading-8 text-gray-600">
                         Your No.1 stop for any gift card purchase and validation - swift response, top-knotch security and trusted by over 5,000 users daily.
@@ -35,12 +35,12 @@
             </div>
 
             <!-- Desktop Banner -->
-            <div class="hidden md:flex md:h-[152px] md:justify-center md:items-center">
+            <div class="hidden md:flex md:h-[152px] md:justify-center md:items-center animate__animated" data-animation="animate__slideInUp">
                 <img src="{{ asset('/images/giftcards-banner.webp') }}" alt="" loading="lazy" width="3648" height="455" decoding="async" data-nimg="1" class="w-auto h-[100%] object-cover object-center" style="color: transparent;">
             </div>
 
             <!-- Mobile Banner -->
-            <div class="mobile-banner-box flex justify-center items-center md:hidden">
+            <div class="mobile-banner-box flex justify-center items-center md:hidden animate__animated" data-animation="animate__slideInUp animate__delay-1s">
                 <img src="{{ asset('/images/giftcards-mobile-banner.webp') }}" alt="" loading="lazy" width="1005" height="330" decoding="async" data-nimg="1" class="w-auto h-auto" srcset="{{ asset('/images/giftcards-mobile-banner.webp') }} 1x, {{ asset('/images/giftcards-mobile-banner.webp') }} 2x" style="color: transparent;">
             </div>
         </div>
@@ -48,7 +48,7 @@
     <!-- Features Section -->
     <div class="bg-[#F1F4FC] py-24 sm:py-32">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
-            <div class="mx-auto max-w-2xl lg:text-center">
+            <div class="mx-auto max-w-2xl lg:text-center animate__animated" data-animation="animate__fadeInUp">
                 <h2 class="text-base font-semibold leading-7 text-indigo-600">Wide Selections</h2>
                 <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                     Why choose us?
@@ -59,7 +59,7 @@
             </div>
             <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
                 <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
-                    <div class="relative pl-16">
+                    <div class="relative pl-16 animate__animated" data-animation="animate__fadeInLeft">
                         <dt class="text-base font-semibold leading-7 text-gray-900">
                             <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-white">
@@ -73,7 +73,7 @@
                             cards quickly and efficiently.
                         </dd>
                     </div>
-                    <div class="relative pl-16">
+                    <div class="relative pl-16 animate__animated" data-animation="animate__fadeInRight">
                         <dt class="text-base font-semibold leading-7 text-gray-900">
                             <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
                                 <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -86,7 +86,7 @@
                             We prioritize your security, ensuring all transactions are protected and your data is safe.
                         </dd>
                     </div>
-                    <div class="relative pl-16">
+                    <div class="relative pl-16 animate__animated" data-animation="animate__fadeInLeft">
                         <dt class="text-base font-semibold leading-7 text-gray-900">
                             <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
                                 <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -99,7 +99,7 @@
                             Choose from a vast range of gift cards for various brands and services, catering to all your needs.
                         </dd>
                     </div>
-                    <div class="relative pl-16">
+                    <div class="relative pl-16 animate__animated" data-animation="animate__fadeInRight">
                         <dt class="text-base font-semibold leading-7 text-gray-900">
                             <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-white">
@@ -119,7 +119,7 @@
 
     @include('partials.cta')
 
-    <div class="px-4">
+    <div class="px-4 animate__animated" data-animation="animate__fadeInUp">
         @include('partials.faq')
     </div>
 

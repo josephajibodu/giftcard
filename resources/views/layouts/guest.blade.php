@@ -10,6 +10,7 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -50,5 +51,24 @@
 
     @stack('scripts')
     @stack('styles')
+
+
+    <script>
+        function animateOnScroll() {
+            const animatedElements = document.querySelectorAll('.animate__animated');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate__animated', entry.target.dataset.animation);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            animatedElements.forEach(el => observer.observe(el));
+        }
+
+        document.addEventListener('DOMContentLoaded', animateOnScroll);
+    </script>
 
 </html>

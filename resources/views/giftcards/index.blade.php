@@ -4,17 +4,21 @@
 @section('content')
 
     <section class="bg-[#F1F4FC] py-24 md:py-32">
-        <div class="py-8 lg:py-16 mx-auto max-w-screen-lg">
-            <p class="text-4xl text-center font-bold mb-4">Purchase <span class="text-indigo-600">or Validate</span></p>
-            <p class="text-center text-gray-700 mb-12">Select a gift card to purchase or validate. If you can't find your preferred card, kindly select the "other cards" option.</p>
+        <div class="py-8 lg:py-16 mx-auto max-w-screen-lg animate__animated animate__fadeIn">
+            <p class="text-4xl text-center font-bold mb-4 animate__animated animate__fadeInDown">Purchase <span class="text-indigo-600">or Validate</span></p>
+            <p class="text-center text-gray-700 mb-12 animate__animated animate__fadeInUp animate__delay-1s">Select a gift card to purchase or validate. If you can't find your preferred card, kindly select the "other cards" option.</p>
 
             <!-- Giftcard -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+                @php
+                    $animations = ['animate__fadeInLeft', 'animate__fadeInUp', 'animate__fadeInRight'];
+                @endphp
+
 
                 @foreach($giftcards as $giftcard)
-                    <div class="bg-[#F1F4FC] rounded-lg shadow-lg pb-6 transform transition duration-500 overflow-hidden">
+                    <div class="bg-[#F1F4FC] rounded-lg shadow-lg pb-6 transform transition duration-500 overflow-hidden animate__animated" data-animation="{{ $animations[$loop->index % 3] }}">
                         <div class="h-48 bg-gray-200 rounded-t-lg mb-4 relative">
-                            <div class="bg-black inset-0 absolute">eeee</div>
+                            <div class="bg-black inset-0 absolute"></div>
                             <img src="{{ asset('/images/giftcards/'.$giftcard['image']) }}" class="object-cover grayscale h-full w-full transition duration-500 hover:grayscale-0 hover:scale-105" alt="giftcards" />
                         </div>
                         <div class="px-4">
