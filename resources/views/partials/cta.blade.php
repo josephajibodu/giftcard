@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="relative mt-16 h-80 lg:mt-8">
-                <img class="absolute left-0 top-0 w-[57rem] max-w-none rounded-md bg-transparent ring-1 ring-white/10" src="{{ asset('/images/support.png') }}" alt="App screenshot" width="1824" height="1080">
+                <img class="absolute left-0 top-0 w-[120%] md:w-[57rem] max-w-none rounded-md bg-transparent ring-1 ring-white/10" src="{{ asset('/images/support.png') }}" alt="App screenshot" width="1824" height="1080">
             </div>
         </div>
     </div>
