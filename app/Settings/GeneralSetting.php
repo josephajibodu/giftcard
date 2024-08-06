@@ -10,7 +10,7 @@ class GeneralSetting extends Settings
 
     public string $eth_wallet_address;
 
-    public string $cash_app_id;
+    public string $usdt_wallet_address;
 
     public array $receiving_email;
 

@@ -16,13 +16,19 @@ return [
     [
         "name" => "Eth",
         "slug" => "eth",
-        "address" => "J3aQt4C4nuPII1q56C0+hQCSHkbGteDL4TYeI/GE8DA=",
+        "address" => "edd3aQt4C4nuPII1q56C0+hQCSHkbGteDL4TYeI/GE8DA=",
         "icon" => "eth.png"
     ],
     [
-        "name" => "CashApp",
-        "slug" => "cashapp",
-        "address" => "\$emirates",
-        "icon" => "cashapp.png"
-    ]
+        "name" => "Usdt",
+        "slug" => "usdt",
+        "address" => "usdkdodI1q56C0+hQCSHkbGteDL4TYeI/GE8DA=",
+        "icon" => "usdt.svg"
+    ],
+//    [
+//        "name" => "CashApp",
+//        "slug" => "cashapp",
+//        "address" => "\$emirates",
+//        "icon" => "cashapp.png"
+//    ]
 ];

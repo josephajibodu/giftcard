@@ -31,8 +31,8 @@ class ManageSettings extends SettingsPage
                     ->label('ETH Deposit Wallet Address')
                     ->required(),
 
-                TextInput::make('cash_app_id')
-                    ->label('CashApp ID')
+                TextInput::make('usdt_wallet_address')
+                    ->label('USDT Deposit Wallet Address')
                     ->required(),
             ])
             ->columns(1);

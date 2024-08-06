@@ -39,6 +39,13 @@
                                 <input type="hidden" name="card_name" value="{{ $giftcard['name'] }}">
                             @endif
 
+                            <div class="mb-6">
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                                <input type="email" id="email" name="email" required
+                                       class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
+                                       placeholder="Email Address">
+                            </div>
+
                             <!-- Currency Dropdown -->
                             <div class="mb-6">
                                 <label for="currency" class="block text-sm font-medium text-gray-700 mb-2">Currency</label>
@@ -103,11 +110,11 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
                                 </svg>
-                                <span>Est. Delivery Time: 1-3 mins</span>
+                                <span>Est. Delivery Time: 1-3 hours</span>
                             </div>
                         </div>
 
-                        <form id="mainForm" action="{{ route('giftcards.purchase', $giftcard['slug']) }}" method="POST">
+                        <form id="mainForm" action="{{ route('giftcards.purchase', $giftcard['slug']) }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             @if(!$giftcard)
@@ -182,6 +189,8 @@
 
 @push('scripts')
     <script>
+        let fee = {{ $fee }};
+
         document.addEventListener('DOMContentLoaded', function () {
             const labels = document.querySelectorAll('label.amount');
 
@@ -215,7 +224,7 @@
             let total = amount ? amount.value * quantity : 0;
 
             // add fees
-            total += (total * 0.015)
+            total += (total * fee)
 
             const formattedNumber = total.toLocaleString('en-US', {
                 style: 'currency',
@@ -430,4 +439,6 @@
         });
 
     </script>
+
+
 @endpush

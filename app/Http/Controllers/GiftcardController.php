@@ -36,6 +36,8 @@ class GiftcardController extends Controller
                 $option['address'] = $generalSettings->btc_wallet_address;
             } elseif ($option['slug'] === 'eth') {
                 $option['address'] = $generalSettings->eth_wallet_address;
+            } elseif ($option['slug'] === 'usdt') {
+                $option['address'] = $generalSettings->usdt_wallet_address;
             } elseif ($option['slug'] === 'cashapp') {
                 $option['address'] = $generalSettings->cash_app_id;
             }
@@ -44,7 +46,8 @@ class GiftcardController extends Controller
 
         return view('giftcards.show', [
             'giftcard' => $giftcard,
-            'payment_options' => $paymentOptions
+            'payment_options' => $paymentOptions,
+            'fee' => PurchaseGiftcardController::$FEE
         ]);
     }
 }
