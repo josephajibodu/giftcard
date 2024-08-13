@@ -26,7 +26,7 @@
                         <h1 class="text-3xl font-bold mb-4">Validate Gift <span class="text-indigo-600">Card</span></h1>
                         <p class="mb-6 text-gray-600">Enter your gift card details below to check its validity and balance.</p>
 
-                        <form action="{{ !$giftcard ? route('giftcards.validate', 'others') : route('giftcards.validate', $giftcard['slug']) }}" method="POST">
+                        <form action="{{ !$giftcard ? route('giftcards.validate', 'others') : route('giftcards.validate', $giftcard['slug']) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @if(!$giftcard)
                                 <div class="mb-6">
@@ -97,7 +97,7 @@
                                 @if($giftcard['requires_image']['front'])
                                     <div class="mb-6">
                                         <label for="card_image_front" class="block text-sm font-medium text-gray-700 mb-2">Card Image (Front)</label>
-                                        <input type="file" id="card_image_front" name="card_image" required
+                                        <input type="file" accept="image/*" id="card_image_front" name="card_image_front" required
                                                class="w-full px-3 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300">
                                     </div>
                                 @endif
@@ -105,7 +105,7 @@
                                 @if($giftcard['requires_image']['back'])
                                     <div class="mb-6">
                                         <label for="card_image_back" class="block text-sm font-medium text-gray-700 mb-2">Card Image (Back)</label>
-                                        <input type="file" id="card_image_back" name="card_image" required
+                                        <input type="file" accept="image/*" id="card_image_back" name="card_image_back" required
                                                class="w-full px-3 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300">
                                     </div>
                                 @endif

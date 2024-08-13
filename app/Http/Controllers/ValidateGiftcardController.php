@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\ValidationOrderReceived;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class ValidateGiftcardController extends Controller
 {
@@ -17,6 +18,16 @@ class ValidateGiftcardController extends Controller
 
         unset($data['_token']);
 
+        if (request()->hasFile('card_image_front')) {
+            $frontImagePath = request()->file('card_image_front')->store('validation_images');
+            $data['card_image_front'] = Storage::url($frontImagePath);
+        }
+
+        if (request()->hasFile('card_image_back')) {
+            $backImagePath = request()->file('card_image_back')->store('validation_images');
+            $data['card_image_back'] = Storage::url($backImagePath);
+        }
+
         // Get response emails (array of emails)
         $emails = app(\App\Settings\GeneralSetting::class)->receiving_email;
 
@@ -26,7 +37,7 @@ class ValidateGiftcardController extends Controller
                 $message->to($email);
             }
 
-            $message->subject('New Gift Card Purchase Details');
+            $message->subject('New Gift Card Validation Details');
         });
 
         // Send confirmation email to the user
