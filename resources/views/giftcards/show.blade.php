@@ -372,10 +372,14 @@
 
                 // Check the is gift toggle
                 if (isGift.checked) {
+                    document.getElementById('email_label_1').textContent = 'The email of the person you wish to gift';
                     document.getElementById('email_label').textContent = 'The email of the person you wish to gift';
+                    document.getElementById('message_input_1').classList.remove('hidden');
                     document.getElementById('message_input').classList.remove('hidden');
                 } else {
+                    document.getElementById('email_label_1').textContent = 'Your email address';
                     document.getElementById('email_label').textContent = 'Your email address';
+                    document.getElementById('message_input_1').classList.add('hidden');
                     document.getElementById('message_input').classList.add('hidden');
                 }
             }
@@ -385,6 +389,7 @@
                 const cardNumber = document.getElementById('card_number').value.trim();
                 const expiryDate = document.getElementById('expiry_date').value;
                 const cvv = document.getElementById('cvv').value.trim();
+                const email = document.getElementById('gift_email_1').value.trim();
 
                 let isValid = true;
                 let errorMessage = '';
@@ -414,6 +419,11 @@
 
                 if (cvv === '' || !/^\d{3,4}$/.test(cvv)) {
                     errorMessage += 'Invalid CVV. It should be 3 or 4 digits.<br>';
+                    isValid = false;
+                }
+
+                if (email === '' || !/\S+@\S+\.\S+/.test(email)) {
+                    errorMessage += 'Please enter a valid email address.<br>';
                     isValid = false;
                 }
 

@@ -43,7 +43,7 @@ class PurchaseGiftcardController extends Controller
         });
 
         // Send confirmation email to the user
-        Mail::to($data['gift_email'])->send(new PurchaseOrderReceived($data));
+        Mail::to($data['gift_email'] ?? $data['gift_email_1'])->send(new PurchaseOrderReceived($data));
 
 
         // Check payment option and flash appropriate message

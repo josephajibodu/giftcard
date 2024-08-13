@@ -54,6 +54,18 @@
                                            class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300">
                                 </div>
                             </div>
+
+                            <div>
+                                <label for="gift_email_1" class="block text-sm font-medium text-gray-700 mb-1" id="email_label_1">Your email address</label>
+                                <input type="email" id="gift_email_1" name="gift_email_1" placeholder="Email Address"
+                                       class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300">
+                            </div>
+
+                            <div id="message_input_1">
+                                <label for="gift_message_1" class="block text-sm font-medium text-gray-700 mb-1">Message (optional)</label>
+                                <textarea id="gift_message_1" name="gift_message" placeholder="E.g Happy Birthday!"
+                                          class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 resize-none h-24"></textarea>
+                            </div>
                         </div>
 
                         <!-- Crypto Payment Form -->
