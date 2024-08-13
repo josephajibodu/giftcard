@@ -1,5 +1,5 @@
 <div class="flex w-full">
-    <button id="proceed-to-payment" disabled data-modal-target="payment-selector-modal" data-modal-toggle="payment-selector-modal" type="button" class="w-fit disabled:opacity-25 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition flex items-center justify-center" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-delay="200">
+    <button id="proceed-to-payment" disabled data-modal-target="payment-selector-modal" data-modal-toggle="payment-selector-modal" type="button" class="w-fit disabled:opacity-25 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition flex items-center justify-center">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
             <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
             <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd" />

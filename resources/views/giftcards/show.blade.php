@@ -111,7 +111,7 @@
                                 @endif
                             @endif
 
-                            <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition flex items-center justify-center" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-delay="400">
+                            <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition flex items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                                 </svg>
@@ -205,7 +205,7 @@
                                 @endforeach
                             </div>
 
-                            <p class="text-xl mb-6" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-delay="200">Total Due: <span class="font-bold text-indigo-600" id="total">$0.00</span></p>
+                            <p class="text-xl mb-6">Total Due: <span class="font-bold text-indigo-600" id="total">$0.00</span></p>
 
                             @include('giftcards.partials.payment')
                         </form>
