@@ -13,7 +13,7 @@
                         </svg>
                         <span>Back</span>
                     </a>
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-delay="200">
                         <img src="{{ asset('/images/giftcards/' . ($giftcard['image'] ?? 'generic.jpg')) }}"
                              alt="{{ isset($giftcard) && !$giftcard ? $giftcard['name'] . ' Gift Card' : 'Generic Gift Card' }}"
                              class="w-full h-64 object-cover">
@@ -23,13 +23,13 @@
                 <!-- Right Section -->
                 <div class="md:w-1/2">
                     @if(request('action') == 'validate')
-                        <h1 class="text-3xl font-bold mb-4">Validate Gift <span class="text-indigo-600">Card</span></h1>
-                        <p class="mb-6 text-gray-600">Enter your gift card details below to check its validity and balance.</p>
+                        <h1 class="text-3xl font-bold mb-4" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-delay="300">Validate Gift <span class="text-indigo-600">Card</span></h1>
+                        <p class="mb-6 text-gray-600" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-delay="400">Enter your gift card details below to check its validity and balance.</p>
 
                         <form action="{{ !$giftcard ? route('giftcards.validate', 'others') : route('giftcards.validate', $giftcard['slug']) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @if(!$giftcard)
-                                <div class="mb-6">
+                                <div class="mb-6" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-delay="300">
                                     <label for="card_name" class="block text-sm font-medium text-gray-700 mb-2">Card Name</label>
                                     <input type="text" id="card_name" name="card_name" required
                                            class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
@@ -39,7 +39,7 @@
                                 <input type="hidden" name="card_name" value="{{ $giftcard['name'] }}">
                             @endif
 
-                            <div class="mb-6">
+                            <div class="mb-6" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-delay="300">
                                 <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
                                 <input type="email" id="email" name="email" required
                                        class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
@@ -47,7 +47,7 @@
                             </div>
 
                             <!-- Currency Dropdown -->
-                            <div class="mb-6">
+                            <div class="mb-6" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-delay="400">
                                 <label for="currency" class="block text-sm font-medium text-gray-700 mb-2">Currency</label>
                                 <select id="currency" name="currency" required
                                         class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300">
@@ -60,7 +60,7 @@
                                 </select>
                             </div>
 
-                            <div class="mb-6">
+                            <div class="mb-6" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-delay="400">
                                 <label for="card_amount" class="block text-sm font-medium text-gray-700 mb-2">Card Amount</label>
                                 <input type="number" id="card_amount" name="card_amount" required
                                        class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
@@ -73,7 +73,7 @@
                                 @endphp
 
                                 @foreach($details as $detail)
-                                    <div class="mb-6">
+                                    <div class="mb-6" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-delay="400">
                                         <label for="{{ $detail['type'] }}" class="block text-sm font-medium text-gray-700 mb-2">{{ $detail['label'] }}</label>
                                         <input type="text" id="{{ $detail['type'] }}" name="{{ $detail['type'] }}" required
                                                class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
@@ -85,7 +85,7 @@
                                     $detail = $giftcard['rule']
                                 @endphp
 
-                                <div class="mb-6">
+                                <div class="mb-6" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-delay="400">
                                     <label for="{{ $detail['type'] }}" class="block text-sm font-medium text-gray-700 mb-2">Card Number</label>
                                     <input type="text" id="{{ $detail['type'] }}" name="{{ $detail['type'] }}" required
                                            class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
@@ -95,7 +95,7 @@
 
                             @if(isset($giftcard['requires_image']) && is_array($giftcard['requires_image']))
                                 @if($giftcard['requires_image']['front'])
-                                    <div class="mb-6">
+                                    <div class="mb-6" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-delay="400">
                                         <label for="card_image_front" class="block text-sm font-medium text-gray-700 mb-2">Card Image (Front)</label>
                                         <input type="file" accept="image/*" id="card_image_front" name="card_image_front" required
                                                class="w-full px-3 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300">
@@ -103,7 +103,7 @@
                                 @endif
 
                                 @if($giftcard['requires_image']['back'])
-                                    <div class="mb-6">
+                                    <div class="mb-6" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-delay="400">
                                         <label for="card_image_back" class="block text-sm font-medium text-gray-700 mb-2">Card Image (Back)</label>
                                         <input type="file" accept="image/*" id="card_image_back" name="card_image_back" required
                                                class="w-full px-3 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300">
@@ -111,7 +111,7 @@
                                 @endif
                             @endif
 
-                            <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition flex items-center justify-center">
+                            <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition flex items-center justify-center" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-delay="400">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                                 </svg>
@@ -126,17 +126,17 @@
                         </div>
 
                     @else
-                        <h1 class="text-3xl font-bold mb-4">{{ $giftcard ? $giftcard['name'] : 'Gift' }} <span class="text-indigo-600">{{ $giftcard ? $giftcard['label'] : 'Card' }}</span></h1>
+                        <h1 class="text-3xl font-bold mb-4" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-delay="200">{{ $giftcard ? $giftcard['name'] : 'Gift' }} <span class="text-indigo-600">{{ $giftcard ? $giftcard['label'] : 'Card' }}</span></h1>
 
-                        <div class="flex mb-4">
-                            <div class="flex items-center mr-6">
+                        <div class="flex mb-4 flex-col md:flex-row">
+                            <div class="flex items-center mr-6" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-delay="200">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
                                     <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                                     <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                                 </svg>
                                 <span>Email Delivery</span>
                             </div>
-                            <div class="flex items-center">
+                            <div class="flex items-center" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-delay="300">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
                                 </svg>
@@ -148,7 +148,7 @@
                             @csrf
 
                             @if(!$giftcard)
-                                <div class="mb-6">
+                                <div class="mb-6" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-delay="300">
                                     <label for="card_name" class="block text-sm font-medium text-gray-700 mb-2">Card Name</label>
                                     <input type="text" id="card_name" name="card_name" required
                                            class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
@@ -158,11 +158,11 @@
                                 <input type="hidden" name="card_name" value="{{ $giftcard['name'] }}">
                             @endif
 
-                            <p class="mb-4">Select the amount you would like to purchase</p>
+                            <p class="mb-4" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-delay="300">Select the amount you would like to purchase</p>
 
                             <div class="grid grid-cols-3 gap-4 mb-6">
                                 @foreach([20, 50, 100, 200, 500] as $amount)
-                                    <label class="relative amount">
+                                    <label class="relative amount" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-delay="{{ $loop->index * 100 }}">
                                         <input type="radio" name="amount" value="{{ $amount }}" required class="sr-only" onchange="calculateTotal()">
                                         <div class="py-2 px-4 border border-indigo-600 hover:bg-indigo-600 hover:text-white active:bg-indigo-700 active:scale-90 rounded-lg text-center cursor-pointer transition">
                                             ${{ $amount }}
@@ -171,7 +171,7 @@
                                 @endforeach
                             </div>
 
-                            <div class="flex items-center mb-6">
+                            <div class="flex items-center mb-6" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-delay="200">
                                 <label for="isGift" class="flex items-center cursor-pointer">
                                     <div class="relative">
                                         <input type="checkbox" id="isGift" name="is_gift" class="sr-only" onchange="toggleCheckbox(this)">
@@ -184,18 +184,18 @@
                                 </label>
                             </div>
 
-                            <div class="mb-6">
+                            <div class="mb-6" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-delay="200">
                                 <label for="quantity" class="block text-sm font-medium text-gray-700 mb-2">No. of digital cards</label>
                                 <div class="mt-1 relative rounded-md shadow-sm">
                                     <input oninput="calculateTotal()" type="number" name="quantity" id="quantity" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="1" value="1" min="1" max="20">
                                 </div>
                             </div>
 
-                            <p class="mb-4 font-bold">Pay with: </p>
+                            <p class="mb-4 font-bold" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-delay="200">Pay with: </p>
 
                             <div class="grid grid-cols-3 gap-4 mb-6">
                                 @foreach(config('payment-options') as $option)
-                                    <label class="relative amount">
+                                    <label class="relative amount" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-delay="{{ $loop->index * 50 }}">
                                         <input type="radio" name="payment-option" value="{{ $option['slug'] }}" required class="sr-only">
                                         <div class="flex gap-x-4 items-center py-2 px-4 border border-indigo-600 hover:bg-indigo-600 hover:text-white active:bg-indigo-700 active:scale-90 rounded-lg text-center cursor-pointer transition">
                                             <img class="h-8" alt="{{ $option['name'] }} payment option" src="{{ asset('/images/payment-icons/'.$option['icon']) }}">
@@ -205,7 +205,7 @@
                                 @endforeach
                             </div>
 
-                            <p class="text-xl mb-6">Total Due: <span class="font-bold text-indigo-600" id="total">$0.00</span></p>
+                            <p class="text-xl mb-6" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-delay="200">Total Due: <span class="font-bold text-indigo-600" id="total">$0.00</span></p>
 
                             @include('giftcards.partials.payment')
                         </form>

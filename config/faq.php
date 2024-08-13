@@ -14,7 +14,7 @@ return [
     [
         'question' => 'What payment methods can I use to buy digital Gift Cards?',
         'answer' =>
-            'At e-Cardly, you can safely buy Gift Cards online from anywhere in the world! There are several payment methods you can use: Credit card, Debit card, Cashapp, Venmo, Crypto (BTC, ETH)',
+            'At GiftValidator, you can safely buy Gift Cards online from anywhere in the world! There are several payment methods you can use: Credit card, Debit card, Crypto (BTC, ETH, USDT)',
     ],
     [
         'question' => 'What if I have an issue redeeming my digital Gift Card?',
