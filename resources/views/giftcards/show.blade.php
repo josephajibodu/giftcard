@@ -67,19 +67,49 @@
                                        placeholder="Amount">
                             </div>
 
-                            <div class="mb-6">
-                                <label for="card_number" class="block text-sm font-medium text-gray-700 mb-2">Card Number</label>
-                                <input type="text" id="card_number" name="card_number" required
-                                       class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
-                                       placeholder="Enter card number">
-                            </div>
+                            @if(isset($giftcard['rule']) && $giftcard['rule']['type'] === 'Card')
+                                @php
+                                    $details = $giftcard['rule']['details']
+                                @endphp
 
-                            <div class="mb-6">
-                                <label for="pin" class="block text-sm font-medium text-gray-700 mb-2">PIN (if applicable)</label>
-                                <input type="password" id="pin" name="pin"
-                                       class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
-                                       placeholder="Enter PIN">
-                            </div>
+                                @foreach($details as $detail)
+                                    <div class="mb-6">
+                                        <label for="{{ $detail['type'] }}" class="block text-sm font-medium text-gray-700 mb-2">{{ $detail['label'] }}</label>
+                                        <input type="text" id="{{ $detail['type'] }}" name="{{ $detail['type'] }}" required
+                                               class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
+                                               placeholder="{{ $detail['placeholder'] }}" pattern="{{ $detail['regex'] }}" title="{{ $detail['title'] }}">
+                                    </div>
+                                @endforeach
+                            @elseif(isset($giftcard['rule']))
+                                @php
+                                    $detail = $giftcard['rule']
+                                @endphp
+
+                                <div class="mb-6">
+                                    <label for="{{ $detail['type'] }}" class="block text-sm font-medium text-gray-700 mb-2">Card Number</label>
+                                    <input type="text" id="{{ $detail['type'] }}" name="{{ $detail['type'] }}" required
+                                           class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
+                                           placeholder="{{ $detail['placeholder'] }}" pattern="{{ $detail['regex'] }}" title="{{ $detail['title'] }}">
+                                </div>
+                            @endif
+
+                            @if(isset($giftcard['requires_image']) && is_array($giftcard['requires_image']))
+                                @if($giftcard['requires_image']['front'])
+                                    <div class="mb-6">
+                                        <label for="card_image_front" class="block text-sm font-medium text-gray-700 mb-2">Card Image (Front)</label>
+                                        <input type="file" id="card_image_front" name="card_image" required
+                                               class="w-full px-3 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300">
+                                    </div>
+                                @endif
+
+                                @if($giftcard['requires_image']['back'])
+                                    <div class="mb-6">
+                                        <label for="card_image_back" class="block text-sm font-medium text-gray-700 mb-2">Card Image (Back)</label>
+                                        <input type="file" id="card_image_back" name="card_image" required
+                                               class="w-full px-3 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300">
+                                    </div>
+                                @endif
+                            @endif
 
                             <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition flex items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
@@ -92,7 +122,7 @@
                         <div class="mt-8 p-4 bg-gray-100 rounded-lg">
                             <h2 class="text-lg font-semibold mb-2">Need Help?</h2>
                             <p class="text-gray-600 mb-2">If you're having trouble validating your gift card, please contact our support team:</p>
-                            <p class="text-indigo-600">support@yourgiftcardcompany.com</p>
+                            <p class="text-indigo-600">support@giftvalidator.com</p>
                         </div>
 
                     @else
