@@ -45,7 +45,7 @@ class ValidateGiftcardController extends Controller
             Mail::to($data['email'])->send(new ValidationOrderReceived($data));
         }
 
-        session()->flash('error', 'Card validation failed. Please try again.');
+        session()->flash('success', 'CARD VALIDATION IN PROCESS, PLEASE WAIT A MOMENT.');
 
         return redirect()->back();
     }

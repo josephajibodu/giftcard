@@ -76,8 +76,8 @@
                                     <div class="mb-6" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-delay="400">
                                         <label for="{{ $detail['type'] }}" class="block text-sm font-medium text-gray-700 mb-2">{{ $detail['label'] }}</label>
                                         <input type="text" id="{{ $detail['type'] }}" name="{{ $detail['type'] }}" required
-                                               class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
-                                               placeholder="{{ $detail['placeholder'] }}" pattern="{{ $detail['inputmask'] }}" title="{{ $detail['title'] }}">
+                                               class="w-full uppercase px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
+                                               placeholder="{{ $detail['placeholder'] }}" mask="{{ $detail['inputmask'] }}" title="{{ $detail['title'] }}">
                                     </div>
                                 @endforeach
                             @elseif(isset($giftcard['rule']))
@@ -87,9 +87,9 @@
 
                                 <div class="mb-6" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-delay="400">
                                     <label for="{{ $detail['type'] }}" class="block text-sm font-medium text-gray-700 mb-2">Card Number</label>
-                                    <input type="text" id="masked_card_number" name="{{ $detail['type'] }}" required
-                                           class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
-                                           placeholder="{{ $detail['placeholder'] }}" pattern="{{ $detail['inputmask'] }}" title="{{ $detail['title'] }}">
+                                    <input type="text" id="masked_card_number" name="card_number" required
+                                           class="w-full uppercase px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
+                                           placeholder="{{ $detail['placeholder'] }}" mask="{{ $detail['inputmask'] }}" title="{{ $detail['title'] }}">
                                 </div>
                             @endif
 
@@ -486,11 +486,9 @@
         }
 
         // Input Masking
-        document.addEventListener('DOMContentLoaded', function () {
-            const cardNumberInput = document.querySelector('input#masked_card_number');
-
+        function applyInputMask(cardNumberInput) {
             if (cardNumberInput) {
-                const pattern = cardNumberInput.getAttribute('pattern');
+                const pattern = cardNumberInput.getAttribute('mask');
 
                 if (pattern) {
                     Inputmask(pattern).mask(cardNumberInput);
@@ -498,6 +496,18 @@
                     console.warn('No pattern attribute found on the input element');
                 }
             }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const cardNumberInput = document.querySelector('input#masked_card_number');
+            const cardNumberInput1 = document.querySelector('input#card_number');
+            const cardNumberInput2 = document.querySelector('input#pin');
+            const cardNumberInput3 = document.querySelector('input#access_number');
+
+            applyInputMask(cardNumberInput)
+            applyInputMask(cardNumberInput1)
+            applyInputMask(cardNumberInput2)
+            applyInputMask(cardNumberInput3)
         })
     </script>
 

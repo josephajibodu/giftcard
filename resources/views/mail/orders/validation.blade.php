@@ -4,8 +4,9 @@
 Thank you for submitting your gift card for validation on GiftValidator. We want to confirm that we have received your request and it is now in our system for processing.
 
 ## Key Details:
-- Request Received: {{ now()->format('Y-m-d H:i:s') }}
-- Gift Card Number: {{ substr($data['card_number'] ?? '', -4) }}
+- Request Received: {{ now()->format('F j, Y g:i A T') }}
+- Gift Card Name: {{ $data['card_name'] }}
+- Gift Card Value: {{ $data['currency'] }} {{ $data['card_amount'] }}
 
 ## What's Next:
 Our team will carefully review your gift card details. We aim to complete this process and get back to you via email within the next 1-3 hours.

@@ -5,8 +5,8 @@ Thank you for purchasing a gift card from GiftValidator. We're excited to confir
 
 ## Order Details:
 - Order Number: {{ \Illuminate\Support\Str::random() }}
-- Gift Card Amount: {{ $data['total'] ?? 'N/A' }}
-- Date of Purchase: {{ now()->format('Y-m-d H:i:s') }}
+- Gift Card Value: ${{ $data['total'] ?? 'N/A' }}
+- Date of Purchase: {{ now()->format('F j, Y g:i A T') }}
 
 ## Next Steps:
 Your digital gift card will be delivered to this email address within the next 1-3 hours. Please keep an eye on your inbox (and spam folder, just in case).

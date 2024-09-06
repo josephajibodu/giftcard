@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 class PurchaseGiftcardController extends Controller
 {
-    public static float $FEE = 0.015;
+    public static float $FEE = 0;
 
     public function store()
     {
