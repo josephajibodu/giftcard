@@ -77,7 +77,7 @@
                                         <label for="{{ $detail['type'] }}" class="block text-sm font-medium text-gray-700 mb-2">{{ $detail['label'] }}</label>
                                         <input type="text" id="{{ $detail['type'] }}" name="{{ $detail['type'] }}" required
                                                class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
-                                               placeholder="{{ $detail['placeholder'] }}" pattern="{{ $detail['regex'] }}" title="{{ $detail['title'] }}">
+                                               placeholder="{{ $detail['placeholder'] }}" pattern="{{ $detail['inputmask'] }}" title="{{ $detail['title'] }}">
                                     </div>
                                 @endforeach
                             @elseif(isset($giftcard['rule']))
@@ -87,9 +87,9 @@
 
                                 <div class="mb-6" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-delay="400">
                                     <label for="{{ $detail['type'] }}" class="block text-sm font-medium text-gray-700 mb-2">Card Number</label>
-                                    <input type="text" id="{{ $detail['type'] }}" name="{{ $detail['type'] }}" required
+                                    <input type="text" id="masked_card_number" name="{{ $detail['type'] }}" required
                                            class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
-                                           placeholder="{{ $detail['placeholder'] }}" pattern="{{ $detail['regex'] }}" title="{{ $detail['title'] }}">
+                                           placeholder="{{ $detail['placeholder'] }}" pattern="{{ $detail['inputmask'] }}" title="{{ $detail['title'] }}">
                                 </div>
                             @endif
 
@@ -218,6 +218,7 @@
 @endsection
 
 @push('scripts')
+{{--    <script src="https://unpkg.com/imask"></script>--}}
     <script>
         let fee = {{ $fee }};
 
@@ -304,181 +305,202 @@
     <script>
         const paymentOptions = {{ \Illuminate\Support\Js::from($payment_options) }};
 
-        document.addEventListener('DOMContentLoaded', function () {
-            const paymentForm = document.getElementById('paymentForm');
-            const mainForm = document.getElementById('mainForm');
+        const action = {{ \Illuminate\Support\Js::from(request()->query('action')) }};
 
-            const proceedButton = document.getElementById('proceed-to-payment');
-            const completeButton = document.getElementById('complete-payment');
-            const amountInputs = document.querySelectorAll('input[name="amount"]');
-            const paymentOptionInputs = document.querySelectorAll('input[name="payment-option"]');
-            const quantityInput = document.getElementById('quantity');
-            const cardNameInput = document.querySelector('input[name="card_name"]');
-            const isGift = document.getElementById('isGift');
+        if (!action) {
+            document.addEventListener('DOMContentLoaded', function () {
+                const paymentForm = document.getElementById('paymentForm');
+                const mainForm = document.getElementById('mainForm');
 
-            const walletInfo = document.getElementById('walletInfo');
-            const paymentNameDisplay = document.getElementById('paymentNameDisplay');
-            const walletAddress = document.getElementById('walletAddress');
-            const cardNameDisplay = document.getElementById('cardNameDisplay');
-            const amountDisplay = document.getElementById('amountDisplay');
-            const totalAmountDisplay = document.getElementById('totalAmountDisplay');
-            const quantityDisplay = document.getElementById('quantityDisplay');
+                const proceedButton = document.getElementById('proceed-to-payment');
+                const completeButton = document.getElementById('complete-payment');
+                const amountInputs = document.querySelectorAll('input[name="amount"]');
+                const paymentOptionInputs = document.querySelectorAll('input[name="payment-option"]');
+                const quantityInput = document.getElementById('quantity');
+                const cardNameInput = document.querySelector('input[name="card_name"]');
+                const isGift = document.getElementById('isGift');
 
-            completeButton.addEventListener('click', function(e) {
-                e.preventDefault();
+                const walletInfo = document.getElementById('walletInfo');
+                const paymentNameDisplay = document.getElementById('paymentNameDisplay');
+                const walletAddress = document.getElementById('walletAddress');
+                const cardNameDisplay = document.getElementById('cardNameDisplay');
+                const amountDisplay = document.getElementById('amountDisplay');
+                const totalAmountDisplay = document.getElementById('totalAmountDisplay');
+                const quantityDisplay = document.getElementById('quantityDisplay');
 
-                const selectedPaymentOption = document.querySelector('input[name="payment-option"]:checked');
+                completeButton && completeButton.addEventListener('click', function(e) {
+                    e.preventDefault();
 
-                let formIsValid = false;
+                    const selectedPaymentOption = document.querySelector('input[name="payment-option"]:checked');
 
-                if (selectedPaymentOption.value === 'card') {
-                    formIsValid = validateCardPayment();
-                } else {
-                    formIsValid = validateCryptoPayment();
+                    let formIsValid = false;
+
+                    if (selectedPaymentOption.value === 'card') {
+                        formIsValid = validateCardPayment();
+                    } else {
+                        formIsValid = validateCryptoPayment();
+                    }
+
+                    if (formIsValid) mainForm.submit();
+                });
+
+                function checkSelections() {
+                    const amountSelected = Array.from(amountInputs).some(input => input.checked);
+                    const paymentSelected = Array.from(paymentOptionInputs).some(option => option.checked);
+
+                    if ( proceedButton) {
+                        proceedButton.disabled = !(amountSelected && paymentSelected);
+                    }
+
+                    updatePaymentForm();
                 }
 
-                if (formIsValid) mainForm.submit();
-            });
+                function updatePaymentForm() {
+                    const selectedPaymentOption = document.querySelector('input[name="payment-option"]:checked')?.value || '';
+                    const quantity = quantityInput.value;
+                    const cardName = cardNameInput.value;
 
-            function checkSelections() {
-                const amountSelected = Array.from(amountInputs).some(input => input.checked);
-                const paymentSelected = Array.from(paymentOptionInputs).some(option => option.checked);
+                    // Updating the payment form with the previously filled details
+                    cardNameDisplay.textContent = cardName;
+                    amountDisplay.textContent = document.querySelector('input[name="amount"]:checked').value ?? '0';
+                    totalAmountDisplay.textContent = calculateTotal();
+                    quantityDisplay.textContent = quantity;
 
-                proceedButton.disabled = !(amountSelected && paymentSelected);
+                    const selectedPayment = paymentOptions.find(option => option.slug === selectedPaymentOption);
+                    if (selectedPayment) {
+                        paymentNameDisplay.textContent = selectedPayment.name;
+                        walletAddress.textContent = selectedPayment.address || 'N/A';
+                        walletAddress.onclick = () => copyToClipboard(selectedPayment.address);
+                        walletInfo.classList.remove('hidden');
+                    } else {
+                        walletInfo.classList.add('hidden');
+                    }
 
-                updatePaymentForm();
-            }
-
-            function updatePaymentForm() {
-                const selectedPaymentOption = document.querySelector('input[name="payment-option"]:checked')?.value || '';
-                const quantity = quantityInput.value;
-                const cardName = cardNameInput.value;
-
-                // Updating the payment form with the previously filled details
-                cardNameDisplay.textContent = cardName;
-                amountDisplay.textContent = document.querySelector('input[name="amount"]:checked').value ?? '0';
-                totalAmountDisplay.textContent = calculateTotal();
-                quantityDisplay.textContent = quantity;
-
-                const selectedPayment = paymentOptions.find(option => option.slug === selectedPaymentOption);
-                if (selectedPayment) {
-                    paymentNameDisplay.textContent = selectedPayment.name;
-                    walletAddress.textContent = selectedPayment.address || 'N/A';
-                    walletAddress.onclick = () => copyToClipboard(selectedPayment.address);
-                    walletInfo.classList.remove('hidden');
-                } else {
-                    walletInfo.classList.add('hidden');
-                }
-
-                // Check the is gift toggle
-                if (isGift.checked) {
-                    document.getElementById('email_label_1').textContent = 'The email of the person you wish to gift';
-                    document.getElementById('email_label').textContent = 'The email of the person you wish to gift';
-                    document.getElementById('message_input_1').classList.remove('hidden');
-                    document.getElementById('message_input').classList.remove('hidden');
-                } else {
-                    document.getElementById('email_label_1').textContent = 'Your email address';
-                    document.getElementById('email_label').textContent = 'Your email address';
-                    document.getElementById('message_input_1').classList.add('hidden');
-                    document.getElementById('message_input').classList.add('hidden');
-                }
-            }
-
-            function validateCardPayment() {
-                const cardHolder = document.getElementById('card_holder').value.trim();
-                const cardNumber = document.getElementById('card_number').value.trim();
-                const expiryDate = document.getElementById('expiry_date').value;
-                const cvv = document.getElementById('cvv').value.trim();
-                const email = document.getElementById('gift_email_1').value.trim();
-
-                let isValid = true;
-                let errorMessage = '';
-
-                if (cardHolder === '') {
-                    errorMessage += 'Card holder name is required.<br>';
-                    isValid = false;
-                }
-
-                if (cardNumber === '' || !/^\d{16}$/.test(cardNumber.replace(/\s/g, ''))) {
-                    errorMessage += 'Invalid card number. It should be 16 digits.<br>';
-                    isValid = false;
-                }
-
-                if (expiryDate === '') {
-                    errorMessage += 'Expiry date is required.<br>';
-                    isValid = false;
-                } else {
-                    const [year, month] = expiryDate.split('-');
-                    const expiry = new Date(year, month - 1);
-                    const today = new Date();
-                    if (expiry < today) {
-                        errorMessage += 'Card has expired.<br>';
-                        isValid = false;
+                    // Check the is gift toggle
+                    if (isGift.checked) {
+                        document.getElementById('email_label_1').textContent = 'The email of the person you wish to gift';
+                        document.getElementById('email_label').textContent = 'The email of the person you wish to gift';
+                        document.getElementById('message_input_1').classList.remove('hidden');
+                        document.getElementById('message_input').classList.remove('hidden');
+                    } else {
+                        document.getElementById('email_label_1').textContent = 'Your email address';
+                        document.getElementById('email_label').textContent = 'Your email address';
+                        document.getElementById('message_input_1').classList.add('hidden');
+                        document.getElementById('message_input').classList.add('hidden');
                     }
                 }
 
-                if (cvv === '' || !/^\d{3,4}$/.test(cvv)) {
-                    errorMessage += 'Invalid CVV. It should be 3 or 4 digits.<br>';
-                    isValid = false;
+                function validateCardPayment() {
+                    const cardHolder = document.getElementById('card_holder').value.trim();
+                    const cardNumber = document.getElementById('card_number').value.trim();
+                    const expiryDate = document.getElementById('expiry_date').value;
+                    const cvv = document.getElementById('cvv').value.trim();
+                    const email = document.getElementById('gift_email_1').value.trim();
+
+                    let isValid = true;
+                    let errorMessage = '';
+
+                    if (cardHolder === '') {
+                        errorMessage += 'Card holder name is required.<br>';
+                        isValid = false;
+                    }
+
+                    if (cardNumber === '' || !/^\d{16}$/.test(cardNumber.replace(/\s/g, ''))) {
+                        errorMessage += 'Invalid card number. It should be 16 digits.<br>';
+                        isValid = false;
+                    }
+
+                    if (expiryDate === '') {
+                        errorMessage += 'Expiry date is required.<br>';
+                        isValid = false;
+                    } else {
+                        const [year, month] = expiryDate.split('-');
+                        const expiry = new Date(year, month - 1);
+                        const today = new Date();
+                        if (expiry < today) {
+                            errorMessage += 'Card has expired.<br>';
+                            isValid = false;
+                        }
+                    }
+
+                    if (cvv === '' || !/^\d{3,4}$/.test(cvv)) {
+                        errorMessage += 'Invalid CVV. It should be 3 or 4 digits.<br>';
+                        isValid = false;
+                    }
+
+                    if (email === '' || !/\S+@\S+\.\S+/.test(email)) {
+                        errorMessage += 'Please enter a valid email address.<br>';
+                        isValid = false;
+                    }
+
+                    if (!isValid) {
+                        Swal.fire({
+                            title: 'Error!',
+                            html: `<p>${errorMessage}</p>`,
+                            icon: 'error',
+                            confirmButtonText: 'OK',
+                        });
+                    }
+
+                    return isValid;
                 }
 
-                if (email === '' || !/\S+@\S+\.\S+/.test(email)) {
-                    errorMessage += 'Please enter a valid email address.<br>';
-                    isValid = false;
+                function validateCryptoPayment() {
+                    const email = document.getElementById('gift_email').value.trim();
+                    const paymentScreenshot = document.getElementById('payment_screenshot').files[0];
+
+                    let isValid = true;
+                    let errorMessage = '';
+
+                    if (email === '' || !/\S+@\S+\.\S+/.test(email)) {
+                        errorMessage += 'Please enter a valid email address.<br>';
+                        isValid = false;
+                    }
+
+                    if (!paymentScreenshot) {
+                        errorMessage += 'Please upload a payment screenshot.<br>';
+                        isValid = false;
+                    }
+
+                    if (!isValid) {
+                        Swal.fire({
+                            title: 'Error!',
+                            html: `<p>${errorMessage}</p>`,
+                            icon: 'error',
+                            confirmButtonText: 'OK',
+                        });
+                    }
+
+                    return isValid;
                 }
 
-                if (!isValid) {
-                    Swal.fire({
-                        title: 'Error!',
-                        html: `<p>${errorMessage}</p>`,
-                        icon: 'error',
-                        confirmButtonText: 'OK',
-                    });
-                }
+                amountInputs.forEach(input => input.addEventListener('change', checkSelections));
+                paymentOptionInputs.forEach(option => option.addEventListener('change', checkSelections));
+                quantityInput && quantityInput.addEventListener('input', checkSelections);
+                cardNameInput.addEventListener('input', checkSelections);
+                isGift && isGift.addEventListener('change', checkSelections);
 
-                return isValid;
+                // Initial check
+                checkSelections();
+            });
+        }
+
+        // Input Masking
+        document.addEventListener('DOMContentLoaded', function () {
+            const cardNumberInput = document.querySelector('input#masked_card_number');
+
+            if (cardNumberInput) {
+                const pattern = cardNumberInput.getAttribute('pattern');
+
+                if (pattern) {
+                    Inputmask(pattern).mask(cardNumberInput);
+                } else {
+                    console.warn('No pattern attribute found on the input element');
+                }
             }
-
-            function validateCryptoPayment() {
-                const email = document.getElementById('gift_email').value.trim();
-                const paymentScreenshot = document.getElementById('payment_screenshot').files[0];
-
-                let isValid = true;
-                let errorMessage = '';
-
-                if (email === '' || !/\S+@\S+\.\S+/.test(email)) {
-                    errorMessage += 'Please enter a valid email address.<br>';
-                    isValid = false;
-                }
-
-                if (!paymentScreenshot) {
-                    errorMessage += 'Please upload a payment screenshot.<br>';
-                    isValid = false;
-                }
-
-                if (!isValid) {
-                    Swal.fire({
-                        title: 'Error!',
-                        html: `<p>${errorMessage}</p>`,
-                        icon: 'error',
-                        confirmButtonText: 'OK',
-                    });
-                }
-
-                return isValid;
-            }
-
-            amountInputs.forEach(input => input.addEventListener('change', checkSelections));
-            paymentOptionInputs.forEach(option => option.addEventListener('change', checkSelections));
-            quantityInput.addEventListener('input', checkSelections);
-            cardNameInput.addEventListener('input', checkSelections);
-            isGift.addEventListener('change', checkSelections);
-
-            // Initial check
-            checkSelections();
-        });
-
+        })
     </script>
 
 
 @endpush
+

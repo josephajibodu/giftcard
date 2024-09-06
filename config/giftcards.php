@@ -10,6 +10,7 @@ return [
             "type" => "Alphanumeric",
             "length" => 16,
             "regex" => "^X[A-Za-z0-9]{15}$",
+            "inputmask" => "X*{15}",
             "placeholder" => "Must start with an X",
             "title" => "16 characters, starting with X"
         ],
@@ -25,6 +26,7 @@ return [
             "type" => "Numeric",
             "length" => 13,
             "regex" => "^\\d{3}-\\d{3}-\\d{3}-\\d{4}$",
+            "inputmask" => "999-999-999-9999",
             "placeholder" => "XXXX-XXX-XXX-XXXX",
             "title" => "13 digits in format XXX-XXX-XXX-XXXX"
         ],
@@ -40,6 +42,7 @@ return [
             "type" => "Alphanumeric",
             "length" => 15,
             "regex" => "^[A-Za-z0-9]{5}-[A-Za-z0-9]{5}-[A-Za-z0-9]{5}$",
+            "inputmask" => "aaaaa-aaaaa-aaaaa",
             "placeholder" => "XXXXX-XXXXX-XXXXX",
             "title" => "15 characters in format XXXXX-XXXXX-XXXXX"
         ],
@@ -59,6 +62,7 @@ return [
                     "label" => "Card Number",
                     "length" => 16,
                     "regex" => "^\\d{4}-\\d{4}-\\d{4}-\\d{4}$",
+                    "inputmask" => "9999-9999-9999-9999",
                     "placeholder" => "XXXX-XXXX-XXXX-XXXX",
                     "title" => "16 digits in format XXXX-XXXX-XXXX-XXXX"
                 ],
@@ -67,6 +71,7 @@ return [
                     "label" => "Card PIN",
                     "length" => 8,
                     "regex" => "^[A-Za-z0-9]{8}$",
+                    "inputmask" => "aaaaaaaa",
                     "placeholder" => "XXXXXXXX",
                     "title" => "8 characters"
                 ]
@@ -84,6 +89,7 @@ return [
             "type" => "Alphanumeric",
             "length" => 12,
             "regex" => "^[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}$",
+            "inputmask" => "aaaa-aaaa-aaaa",
             "placeholder" => "XXXX-XXXX-XXXX",
             "title" => "12 characters in format XXXX-XXXX-XXXX"
         ],
@@ -99,6 +105,7 @@ return [
             "type" => "Alphanumeric",
             "length" => 15,
             "regex" => "^[A-Za-z0-9]{4}-[A-Za-z0-9]{6}-[A-Za-z0-9]{5}$",
+            "inputmask" => "aaaa-aaaaaa-aaaaa",
             "placeholder" => "XXXX-XXXXXX-XXXXX",
             "title" => "15 characters in format XXXX-XXXXXX-XXXXX"
         ],
@@ -113,6 +120,7 @@ return [
             "type" => "Alphanumeric",
             "length" => 16,
             "regex" => "^[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}$",
+            "inputmask" => "aaaa-aaaa-aaaa-aaaa",
             "placeholder" => "XXXX-XXXX-XXXX-XXXX",
             "title" => "16 characters in format XXXX-XXXX-XXXX-XXXX"
         ],
@@ -131,6 +139,7 @@ return [
                     "label" => "Card Number",
                     "length" => 19,
                     "regex" => "^\\d{4}-\\d{4}-\\d{4}-\\d{4}-\\d{3}$",
+                    "inputmask" => "9999-9999-9999-9999-999",
                     "placeholder" => "XXXX-XXXX-XXXX-XXXX-XXX",
                     "title" => "19 digits in format XXXX-XXXX-XXXX-XXXX-XXX"
                 ],
@@ -139,6 +148,7 @@ return [
                     "label" => "Card PIN",
                     "length" => 14,
                     "regex" => "^[A-Za-z0-9]{14}$",
+                    "inputmask" => "aaaaaaaaaaaaaa",
                     "placeholder" => "XXXXXXXXXXXXXX",
                     "title" => "14 characters"
                 ]
@@ -159,6 +169,7 @@ return [
                     "label" => "Card Number",
                     "length" => 15,
                     "regex" => "^\\d{4}-\\d{4}-\\d{4}-\\d{3}$",
+                    "inputmask" => "9999-9999-9999-999",
                     "placeholder" => "XXXX-XXXX-XXXX-XXX",
                     "title" => "15 digits in format XXXX-XXXX-XXXX-XXX"
                 ],
@@ -167,6 +178,7 @@ return [
                     "label" => "Card PIN",
                     "length" => 4,
                     "regex" => "^\\d{4}$",
+                    "inputmask" => "9999",
                     "placeholder" => "XXXX",
                     "title" => "4 digits"
                 ]
@@ -228,6 +240,7 @@ return [
                     "label" => "Card Number",
                     "length" => 16,
                     "regex" => "^\\d{4}-\\d{4}-\\d{4}-\\d{4}$",
+                    "inputmask" => "9999-9999-9999-9999",
                     "placeholder" => "XXXX-XXXX-XXXX-XXXX",
                     "title" => "16 digits in format XXXX-XXXX-XXXX-XXXX"
                 ],
@@ -236,6 +249,7 @@ return [
                     "label" => "Access Number",
                     "length" => 8,
                     "regex" => "^[A-Za-z0-9]{8}$",
+                    "inputmask" => "aaaaaaaa",
                     "placeholder" => "XXXXXXXX",
                     "title" => "8 characters"
                 ]
@@ -252,6 +266,7 @@ return [
             "type" => "Alphanumeric",
             "length" => 25,
             "regex" => "^[A-Za-z0-9]{5}-[A-Za-z0-9]{5}-[A-Za-z0-9]{5}-[A-Za-z0-9]{5}-[A-Za-z0-9]{5}$",
+            "inputmask" => "aaaaa-aaaaa-aaaaa-aaaaa-aaaaa",
             "placeholder" => "XXXXX-XXXXX-XXXXX-XXXXX-XXXXX",
             "title" => "25 characters in format XXXXX-XXXXX-XXXXX-XXXXX-XXXXX"
         ],
