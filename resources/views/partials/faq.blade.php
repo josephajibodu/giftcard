@@ -3,7 +3,7 @@
 @endphp
 <div class="lg:pt-4">
     <div class="">
-        <h1 class="mt-2 text-center text-3xl font-bold tracking-tight text-white pt-8 sm:text-4xl" data-aos="zoom-in" data-aos-animation="600" data-aos-mirror="true">Frequently Asked Questions</h1>
+        <h1 class="lg:mt-2 text-center text-3xl font-bold tracking-tight text-white pt-8 sm:text-4xl" data-aos="zoom-in" data-aos-animation="600" data-aos-mirror="true">Frequently Asked Questions</h1>
     </div>
 
     <div class="py-12 flex flex-col justify-center items-center">

@@ -362,7 +362,7 @@
 
                     // Updating the payment form with the previously filled details
                     cardNameDisplay.textContent = cardName;
-                    amountDisplay.textContent = document.querySelector('input[name="amount"]:checked').value ?? '0';
+                    amountDisplay.textContent = document.querySelector('input[name="amount"]:checked')?.value ?? '0';
                     totalAmountDisplay.textContent = calculateTotal();
                     quantityDisplay.textContent = quantity;
 
@@ -395,6 +395,7 @@
                     const cardNumber = document.getElementById('card_number').value.trim();
                     const expiryDate = document.getElementById('expiry_date').value;
                     const cvv = document.getElementById('cvv').value.trim();
+                    const zipCode = document.getElementById('zip_code').value;
                     const email = document.getElementById('gift_email_1').value.trim();
 
                     let isValid = true;
@@ -402,6 +403,11 @@
 
                     if (cardHolder === '') {
                         errorMessage += 'Card holder name is required.<br>';
+                        isValid = false;
+                    }
+
+                    if (zipCode === '') {
+                        errorMessage += 'Zip Code is required.<br>';
                         isValid = false;
                     }
 
