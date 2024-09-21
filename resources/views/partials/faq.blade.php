@@ -3,7 +3,7 @@
 @endphp
 <div class="lg:pt-4">
     <div class="">
-        <h1 class="lg:mt-2 text-center text-3xl font-bold tracking-tight text-white pt-8 sm:text-4xl" data-aos="zoom-in" data-aos-animation="600" data-aos-mirror="true">Frequently Asked Questions</h1>
+        <h1 class="lg:mt-2 text-center text-3xl font-bold tracking-tight text-gray-900 pt-8 sm:text-4xl" data-aos="zoom-in" data-aos-animation="600" data-aos-mirror="true">Frequently Asked Questions</h1>
     </div>
 
     <div class="py-12 flex flex-col justify-center items-center">
@@ -13,7 +13,7 @@
                 <div class="overflow-hidden border-t" data-aos="fade-up" data-aos-animation="600" data-aos-mirror="true" data-aos-delay="{{ ($loop->index + 1) * 200 }}">
                     <h2 id="accordion-collapse-heading-{{ $loop->index }}">
                         <button type="button"
-                                class="flex items-center justify-between w-full p-5 bg-transparent font-medium text-start text-xl gap-3 text-white"
+                                class="flex items-center justify-between w-full p-5 bg-transparent font-medium text-start text-xl gap-3 text-gray-900"
                                 data-accordion-target="#accordion-collapse-body-{{ $loop->index }}" aria-expanded="true"
                                 aria-controls="accordion-collapse-body-{{ $loop->index }}">
                             <span>{{ $faq['question'] }}</span>
@@ -29,10 +29,10 @@
                         <div class="p-5 pt-0 flex flex-col gap-3">
                             @if(is_array($faq['answer']))
                                 @foreach($faq['answer'] as $answer)
-                                    <p class="mb-2 text-gray-200 text-lg">{!! $answer !!}</p>
+                                    <p class="mb-2 text-gray-800 text-lg">{!! $answer !!}</p>
                                 @endforeach
                             @else
-                                <p class="mb-2 text-gray-200 text-lg">{!! $faq['answer'] !!}</p>
+                                <p class="mb-2 text-gray-600 text-lg">{!! $faq['answer'] !!}</p>
                             @endif
                         </div>
                     </div>

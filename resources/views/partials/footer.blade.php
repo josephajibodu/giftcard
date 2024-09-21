@@ -21,7 +21,7 @@
             </ul>
         </div>
         <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
-        <span class="block text-base text-gray-500 sm:text-center">© 2021 <a href="{{ url('/') }}" class="hover:underline">VetGiftcards™</a>. All Rights Reserved.</span>
+        <span class="block text-base text-gray-500 sm:text-center">© 2021 <a href="{{ url('/') }}" class="hover:underline">GiftValidator</a>. All Rights Reserved.</span>
     </div>
 </footer>
 
