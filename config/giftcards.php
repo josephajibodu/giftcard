@@ -42,7 +42,7 @@ return [
             "type" => "Alphanumeric",
             "length" => 15,
             "regex" => "^[A-Za-z0-9]{5}-[A-Za-z0-9]{5}-[A-Za-z0-9]{5}$",
-            "inputmask" => "aaaaa-aaaaa-aaaaa",
+            "inputmask" => "*****-*****-*****",
             "placeholder" => "XXXXX-XXXXX-XXXXX",
             "title" => "15 characters in format XXXXX-XXXXX-XXXXX"
         ],
@@ -71,7 +71,7 @@ return [
                     "label" => "Card PIN",
                     "length" => 8,
                     "regex" => "^[A-Za-z0-9]{8}$",
-                    "inputmask" => "aaaaaaaa",
+                    "inputmask" => "********",
                     "placeholder" => "XXXXXXXX",
                     "title" => "8 characters"
                 ]
@@ -89,7 +89,7 @@ return [
             "type" => "Alphanumeric",
             "length" => 12,
             "regex" => "^[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}$",
-            "inputmask" => "aaaa-aaaa-aaaa",
+            "inputmask" => "****-****-****",
             "placeholder" => "XXXX-XXXX-XXXX",
             "title" => "12 characters in format XXXX-XXXX-XXXX"
         ],
@@ -105,7 +105,7 @@ return [
             "type" => "Alphanumeric",
             "length" => 15,
             "regex" => "^[A-Za-z0-9]{4}-[A-Za-z0-9]{6}-[A-Za-z0-9]{5}$",
-            "inputmask" => "aaaa-aaaaaa-aaaaa",
+            "inputmask" => "****-******-*****",
             "placeholder" => "XXXX-XXXXXX-XXXXX",
             "title" => "15 characters in format XXXX-XXXXXX-XXXXX"
         ],
@@ -120,7 +120,7 @@ return [
             "type" => "Alphanumeric",
             "length" => 16,
             "regex" => "^[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}$",
-            "inputmask" => "aaaa-aaaa-aaaa-aaaa",
+            "inputmask" => "****-****-****-****",
             "placeholder" => "XXXX-XXXX-XXXX-XXXX",
             "title" => "16 characters in format XXXX-XXXX-XXXX-XXXX"
         ],
@@ -148,7 +148,7 @@ return [
                     "label" => "Card PIN",
                     "length" => 14,
                     "regex" => "^[A-Za-z0-9]{14}$",
-                    "inputmask" => "aaaaaaaaaaaaaa",
+                    "inputmask" => "**************",
                     "placeholder" => "XXXXXXXXXXXXXX",
                     "title" => "14 characters"
                 ]
@@ -249,7 +249,7 @@ return [
                     "label" => "Access Number",
                     "length" => 8,
                     "regex" => "^[A-Za-z0-9]{8}$",
-                    "inputmask" => "aaaaaaaa",
+                    "inputmask" => "********",
                     "placeholder" => "XXXXXXXX",
                     "title" => "8 characters"
                 ]
@@ -266,7 +266,7 @@ return [
             "type" => "Alphanumeric",
             "length" => 25,
             "regex" => "^[A-Za-z0-9]{5}-[A-Za-z0-9]{5}-[A-Za-z0-9]{5}-[A-Za-z0-9]{5}-[A-Za-z0-9]{5}$",
-            "inputmask" => "aaaaa-aaaaa-aaaaa-aaaaa-aaaaa",
+            "inputmask" => "*****-*****-*****-*****-*****",
             "placeholder" => "XXXXX-XXXXX-XXXXX-XXXXX-XXXXX",
             "title" => "25 characters in format XXXXX-XXXXX-XXXXX-XXXXX-XXXXX"
         ],
