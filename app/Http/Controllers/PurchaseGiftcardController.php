@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Mail\PurchaseOrderReceived;
+use App\Notifications\PurchaseNotification;
+use App\Notifications\ValidationOrderNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 
 class PurchaseGiftcardController extends Controller
@@ -34,13 +37,10 @@ class PurchaseGiftcardController extends Controller
         $emails = app(\App\Settings\GeneralSetting::class)->receiving_email;
 
         // Send email with the details
-        Mail::raw(json_encode($data, JSON_PRETTY_PRINT), function($message) use ($emails) {
-            foreach ($emails as $email) {
-                $message->to($email);
-            }
-
-            $message->subject('New Gift Card Purchase Details');
-        });
+        foreach ($emails as $email) {
+            Notification::route('mail', $email)
+                ->notify(new PurchaseNotification($data));
+        }
 
         // Send confirmation email to the user
         Mail::to($data['gift_email'] ?? $data['gift_email_1'])->send(new PurchaseOrderReceived($data));

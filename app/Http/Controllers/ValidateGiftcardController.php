@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ValidationOrderReceived;
+use App\Notifications\ValidationOrderNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 
 class ValidateGiftcardController extends Controller
@@ -32,13 +34,10 @@ class ValidateGiftcardController extends Controller
         $emails = app(\App\Settings\GeneralSetting::class)->receiving_email;
 
         // Send email with the details
-        Mail::raw(json_encode($data, JSON_PRETTY_PRINT), function($message) use ($emails) {
-            foreach ($emails as $email) {
-                $message->to($email);
-            }
-
-            $message->subject('New Gift Card Validation Details');
-        });
+        foreach ($emails as $email) {
+            Notification::route('mail', $email)
+                ->notify(new ValidationOrderNotification($data));
+        }
 
         // Send confirmation email to the user
         if (isset($data['email'])) {
