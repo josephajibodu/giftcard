@@ -27,7 +27,11 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->registration()
+            ->when(
+                config('settings.registration_enabled', true),
+                fn ($panel) => $panel->registration()
+            )
+
             ->profile()
             ->colors([
                 'primary' => Color::Purple,

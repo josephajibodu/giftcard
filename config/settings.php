@@ -2,6 +2,8 @@
 
 return [
 
+    'registration_enabled' => env('ADMIN_PANEL_REGISTRATION_ENABLED', true),
+
     /*
      * Each settings class used in your application must be registered, you can
      * put them (manually) here.
