@@ -1,7 +1,7 @@
 <x-mail::message>
 # Dear Customer,
 
-Thank you for purchasing a gift card from GiftValidator. We're excited to confirm that your order has been successfully processed.
+Thank you for purchasing a gift card from EgiftChecker. We're excited to confirm that your order has been successfully processed.
 
 ## Order Details:
 - Order Number: {{ \Illuminate\Support\Str::random() }}

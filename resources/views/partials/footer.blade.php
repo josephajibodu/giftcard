@@ -3,7 +3,7 @@
         <div class="sm:flex sm:items-center sm:justify-between">
             <a href="{{ url('/') }}" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
 {{--                <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="VetGiftcard Logo" />--}}
-                <span class="text-xl">Gift<b class="text-indigo-600">Validator</b></span>
+                <span class="text-xl">Egift<b class="text-indigo-600">Checker</b></span>
             </a>
             <ul class="flex flex-wrap items-center mb-6 text-md font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
                 <li>
@@ -21,7 +21,7 @@
             </ul>
         </div>
         <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
-        <span class="block text-base text-gray-500 sm:text-center">© 2021 <a href="{{ url('/') }}" class="hover:underline">GiftValidator</a>. All Rights Reserved.</span>
+        <span class="block text-base text-gray-500 sm:text-center">© 2021 <a href="{{ url('/') }}" class="hover:underline">EgiftChecker</a>. All Rights Reserved.</span>
     </div>
 </footer>
 

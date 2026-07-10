@@ -2,7 +2,7 @@
 {{-- Header --}}
 <x-slot:header>
 <x-mail::header :url="config('app.url')">
-    <span style="font-size: 20px; font-weight: 400; background-color: white; padding: 12px 16px; border-radius: 12px;">Gift<b style="color: #5850ec;">Validator</b></span>
+    <span style="font-size: 20px; font-weight: 400; background-color: white; padding: 12px 16px; border-radius: 12px;">Egift<b style="color: #5850ec;">Checker</b></span>
 </x-mail::header>
 </x-slot:header>
 

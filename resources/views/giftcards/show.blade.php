@@ -122,7 +122,7 @@
                         <div class="mt-8 p-4 bg-gray-100 rounded-lg">
                             <h2 class="text-lg font-semibold mb-2">Need Help?</h2>
                             <p class="text-gray-600 mb-2">If you're having trouble validating your gift card, please contact our support team:</p>
-                            <p class="text-indigo-600">support@giftvalidator.com</p>
+                            <p class="text-indigo-600">support@egiftchecker.com</p>
                         </div>
 
                     @else

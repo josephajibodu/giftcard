@@ -1,7 +1,7 @@
 <x-mail::message>
 # Dear Customer,
 
-Thank you for submitting your gift card for validation on GiftValidator. We want to confirm that we have received your request and it is now in our system for processing.
+Thank you for submitting your gift card for validation on EgiftChecker. We want to confirm that we have received your request and it is now in our system for processing.
 
 ## Key Details:
 - Request Received: {{ now()->format('F j, Y g:i A T') }}

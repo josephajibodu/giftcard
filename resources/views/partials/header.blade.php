@@ -2,7 +2,7 @@
     <nav class="w-full max-w-screen-xl mx-auto flex items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div class="flex lg:flex-1">
             <a href="{{ url('/') }}" class="-m-1.5 p-1.5">
-                <span class="text-xl">Gift<b class="text-indigo-600">Validator</b></span>
+                <span class="text-xl">Egift<b class="text-indigo-600">Checker</b></span>
             </a>
         </div>
         <div class="flex lg:hidden">
@@ -25,7 +25,7 @@
         <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div class="flex items-center justify-between">
                 <a href="{{ url('/') }}" class="-m-1.5 p-1.5">
-                    <span class="text-xl">Gift<b class="text-indigo-600">Validator</b></span>
+                    <span class="text-xl">Egift<b class="text-indigo-600">Checker</b></span>
                 </a>
                 <button id="mobile-menu-close" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
                     <span class="sr-only">Close menu</span>
