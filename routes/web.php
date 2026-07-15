@@ -36,7 +36,7 @@ Route::post('contact-us', function (Request $request) {
     });
 
     return redirect()->route('contact-us')->with('success', 'Your message has been sent successfully!');
-})->name('contact-us');
+})->name('contact-us.store');
 
 Route::view('about-us', 'about')->name('about-us');
 Route::view('frequently-asked-questions', 'faq')->name('faq');
